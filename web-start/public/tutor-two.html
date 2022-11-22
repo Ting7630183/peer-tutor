@@ -1,0 +1,201 @@
+<!doctype html>
+<!--
+  Copyright 2015 Google Inc. All rights reserved.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+      https://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Learn how to use the Firebase platform on the Web">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peer Penguin</title>
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Friendly Chat">
+  <meta name="theme-color" content="#303F9F">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Friendly Chat">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+
+  <!-- Tile icon for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+  <meta name="msapplication-navbutton-color" content="#303F9F">
+
+  <!-- Material Design Lite -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+  <!-- App Styling -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+  <link rel="stylesheet" href="styles/tutor-two.css">
+
+  <!-- TODO: Enable First Input Delay polyfill library. -->
+  <!--  <script type="text/javascript">!function(n,e){var t,o,i,c=[],f={passive:!0,capture:!0},r=new Date,a="pointerup",u="pointercancel";function p(n,c){t||(t=c,o=n,i=new Date,w(e),s())}function s(){o>=0&&o<i-r&&(c.forEach(function(n){n(o,t)}),c=[])}function l(t){if(t.cancelable){var o=(t.timeStamp>1e12?new Date:performance.now())-t.timeStamp;"pointerdown"==t.type?function(t,o){function i(){p(t,o),r()}function c(){r()}function r(){e(a,i,f),e(u,c,f)}n(a,i,f),n(u,c,f)}(o,t):p(o,t)}}function w(n){["click","mousedown","keydown","touchstart","pointerdown"].forEach(function(e){n(e,l,f)})}w(n),self.perfMetrics=self.perfMetrics||{},self.perfMetrics.onFirstInputDelay=function(n){c.push(n),s()}}(addEventListener,removeEventListener);</script> -->
+  <script>
+    function hint1() {
+        let inputElement = document.getElementById("show-hint1")
+        inputElement.innerHTML = "You can follow the procedures shown above to identify which step(s) he/she is not familiar with. Try to ask him/her to clearly express why this problem is difficult, or where exactly is he/she stuck."
+    }
+
+    function hint2() {
+        let inputElement = document.getElementById("show-hint2")
+        inputElement.innerHTML = "This is the fundamental step of solving the problem. You can encourage him/her to review the previous pages on the website."
+    }
+
+    function hint3() {
+        let inputElement = document.getElementById("show-hint3")
+        inputElement.innerHTML = "You can ask which variable(s) he/she can’t identify. Ask him/her to read the prompt carefully. For example, the value of n in question three is suggested by ‘semiannually’, which means n=2."
+    }
+
+    function hint4() {
+        let inputElement = document.getElementById("show-hint4")
+        inputElement.innerHTML = "You can either ask him/her to review the website or introduce another practice to explain the solving method to this kind of questions. You can check out the extra practices by clicking the fourth tab above."
+    }
+</script>
+</head>
+
+<body>
+<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+  <!-- Header section containing logo -->
+  <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+      <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+        <h3><i class="material-icons">chat_bubble_outline</i>Peer Penguin</h3>
+      </div>
+        
+      <div id="user-container">
+        <div hidden id="user-pic"></div>
+        <div hidden id="user-name"></div>
+        <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+          Sign-out
+        </button>
+        <button id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+          <i class="material-icons">account_circle</i>Sign-in with Google
+        </button>
+      </div>
+    </div>
+  </header>
+  <main class="mdl-layout__content mdl-color--grey-100">
+     
+      <div class='mdl-grid'>
+<!--
+          instructional content
+-->
+        <div id="content-part" class="mdl-cell mdl-cell--6-col" >
+<!-- tabs at the top-->
+    <div class='top-tabs'>
+        <p class='tab-one'><a href='tutor-one.html' style='color: black; text-decoration: none; line-height: 3rem;'>General Hints</a></p>
+        <p class='tab-two'><a href='tutor-two.html' style='color:  white;text-decoration: none; line-height: 3rem;'>Practice Hints</a></p>
+        <p class='tab-three'><a href='tutor-three.html' style='color: black; text-decoration: none; line-height: 3rem;'>Encourage Questions</a></p> 
+        <p class='tab-four'><a href='tutor-four.html' style='color: black; text-decoration: none; line-height: 3rem;'>Extra Practice</a></p> 
+    </div>
+          
+        <br>
+          
+    <p>It’s always important to solve the questions with clear theoretical procedures in mind. </p>
+    <p>For questions that rely on formulas to solve, the critical step is to understand the <b>formula</b> and the <b>meaning of each variable</b>. Here are the <b>general steps</b> required to solve the problem:</p>
+          
+<ol>
+    <li>Recall the formula of compound interest;</li>
+    <li>Find out the value of each variable by reading the prompt carefully;</li>
+    <li>Calculate the result using the formula.</li>
+</ol>  
+            
+        <p>You can use these steps to help your peer identify the steps he/she is not familiar with. It’s always helpful to ask the peer to explain his/her thoughts in detail.</p>
+          <br>
+          
+  <div id="hints">Hints</div>
+  <p id="line">Here’s what you can say if the student...</p>
+  <div class="hint-1">
+      <div class="hint1-container"> <button onclick="hint1()">Click</button></div>
+      <div id="hint1-content">doesn’t have the clue of solving the problem.</div>
+      <div id="show-hint1"></div>
+  </div>
+
+  <div class="hint-2">
+    <div class="hint2-container"> <button onclick="hint2()">Click</button></div>
+    <div id="hint2-content">doesn’t remember the formula of compound interest.</div>
+    <div id="show-hint2"></div>
+</div>
+
+<div class="hint-3">
+    <div class="hint3-container"> <button onclick="hint3()">Click</button></div>
+    <div id="hint3-content">has difficulty identifying the variables.</div>
+    <div id="show-hint3"></div>
+</div>
+
+
+<div class="hint-4">
+    <div class="hint4-container"> <button onclick="hint4()">Click</button></div>
+    <div id="hint4-content">still can’t work it out after your explanation.</div>
+    <div id="show-hint4"></div>
+</div>
+
+
+
+      </div>   
+          <!--chat box (codes are provided)-->
+    <div id="messages-card-container" class="mdl-cell mdl-cell--6-col">
+
+      <!-- Messages container -->
+        <!-- <div id="messages-card" class="mdl-card mdl-shadow--2dp"></div> -->
+              
+              <!-- Messages container -->
+<!--      <div id="messages-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">-->
+          
+        <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+          <div id="messages">
+          </div>
+          <form id="message-form" action="#">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="message" autocomplete="off">
+              <label class="mdl-textfield__label" for="message">Message...</label>
+            </div>
+            <button id="submit" disabled type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+              Send
+            </button>
+          </form>
+          <form id="image-form" action="#">
+            <input id="mediaCapture" type="file" accept="image/*" capture="camera">
+            <button id="submitImage" title="Add an image" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--amber-400 mdl-color-text--white">
+              <i class="material-icons">image</i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+      </div>
+    </div>
+  </main> 
+</div>
+    
+
+
+<!-- This script is created by webpack -->
+<script src="scripts/main.js"></script>
+</body>
+</html>

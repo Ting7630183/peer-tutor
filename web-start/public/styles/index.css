@@ -1,0 +1,37 @@
+body{
+    background-color: #FBF6ED;
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-content{
+    margin:200px 20px 20px 100px;
+}
+
+.title{
+    font-size:20px;
+    /* font-weight: 800; */
+}
+/* .subtitle{
+    font-size:20px;
+} */
+.select-tutor-tutee{
+    font-size:20px;
+    margin: 120px auto;
+}
+
+.button {
+    font-size:20px;
+    background-color: #0288D1;
+    padding: 6px 20px;
+    margin: auto 5px;
+    color:white;
+    border-radius: 5px;
+    border: none;
+}
+
+.penguin {
+    width: 160px;
+/*    position: absolute;*/
+    float: left;
+    margin-top:360px;
+}
